@@ -1,0 +1,14 @@
+{
+  "name": "react-portfolio",
+  "version": "1.0.0",
+  "description": "React Portfolio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laura Levenhagen",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.23.0"
+  }
+}
