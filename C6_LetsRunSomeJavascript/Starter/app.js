@@ -3,11 +3,12 @@ const http = require('http');
 const fs = require('fs');
 const express = require('express');
 const app = express();
-
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
-
+const urlencodedParser = bodyParser.urlencoded({extended: false });
+const jsonParser = bodyParser.json();
 // ** EJS IS AUTOMATICALLY SET UP AS THE VIEW ENGINE WHEN YOU NPM INSTALL IT **
 
 app.get('/', (req, res)=>{
@@ -15,6 +16,16 @@ app.get('/', (req, res)=>{
 })
 app.get('/person', (req, res)=> {
   res.render('person.ejs', {names: ['laura', 'ally', 'ryan', 'carl']})
+})
+app.post('/person', urlencodedParser, (req, res)=> {
+  res.send('thank you!');
+  console.log(req.body.firstname);
+  console.log(req.body.lastname);
+})
+app.post('/personjson', jsonParser, (req,res)=> {
+  res.send('thank you for the json data');
+  console.log(req.body.firstname);
+  console.log(req.body.lastname);
 })
 // app.get('/person/:id', (req, res)=> {
 //   res.send('<h1>hey ' + req.params.id + '</h1>')

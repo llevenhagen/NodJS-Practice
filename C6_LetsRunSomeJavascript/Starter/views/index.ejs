@@ -11,5 +11,24 @@
     <%for (let i=0; i<names.length; i++) {%>
       <li><%=names[i]%></li>
       <%}%>
+    </ul>
+      <form method="POST" action="/person">
+        <input type="text" id="firstname" name="firstname" /><br/>
+        <input type="text" id="lastname" name="lastname" />
+        <input type="submit" value="submit"/>
+      </form>
+      <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+      <script>
+        $.ajax({
+          type: 'POST',
+          url: "/personjson",
+          data: JSON.stringify({firstname: 'Jane', lastname: 'Doe'}),
+          dataType: 'json',
+          contentType: 'application/json'
+        });
+      </script>
   </body>
 </html>
