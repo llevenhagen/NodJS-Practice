@@ -9,6 +9,7 @@
   "author": "Laura Levenhagen",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "moment": "^2.23.0"
   }

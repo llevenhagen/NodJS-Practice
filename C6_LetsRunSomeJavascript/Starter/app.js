@@ -6,16 +6,19 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+app.use(express.static('public'));
+
+// ** EJS IS AUTOMATICALLY SET UP AS THE VIEW ENGINE WHEN YOU NPM INSTALL IT **
 
 app.get('/', (req, res)=>{
-  res.render('index.html')
+  res.render('index.ejs', {names: ['laura', 'ally', 'ryan', 'carl']})
 })
-app.get('/api', (req, res)=> {
-  res.json({firstname: 'john', lastname: 'doe'})
+app.get('/person', (req, res)=> {
+  res.render('person.ejs', {names: ['laura', 'ally', 'ryan', 'carl']})
 })
-app.get('/person/:id', (req, res)=> {
-  res.send('<h1>hey ' + req.params.id + '</h1>')
-})
+// app.get('/person/:id', (req, res)=> {
+//   res.send('<h1>hey ' + req.params.id + '</h1>')
+// })
 app.listen(port);
 // http.createServer(function(req, res) {
 //   if (req.url === '/') {
